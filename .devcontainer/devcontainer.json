@@ -37,14 +37,25 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
 				"ms-azuretools.vscode-docker",
 				"VisualStudioExptTeam.vscodeintellicode",
-				"ms-python.python",
-				"editorconfig.editorconfig"
-			]
+				"editorconfig.editorconfig",
+				"ms-python.flake8"
+			],
+			"settings": {
+				"python.linting.enabled": true,
+				"python.linting.flake8Enabled": true,
+				"python.linting.lintOnSave": true,
+				"files.autoSave": "afterDelay",
+				"files.autoSaveDelay": 1000,
+				"editor.indentSize": "tabSize",
+				"editor.autoIndent": "full"
+			}
 		}
 	},
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
-	"postStartCommand": "app/python manage.py runserver 0.0.0.0:8000"
+	"postStartCommand": "cd app && python manage.py runserver 0.0.0.0:8000"
 }
