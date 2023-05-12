@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+      dockerfile: ./Dockerfile
+    command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 app.py runserver 0.0.0.0:8000 --nothreading --noreload"]
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:8000
+      - 5678:5678
